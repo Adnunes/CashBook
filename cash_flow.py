@@ -28,8 +28,9 @@ class AccountingEntry:
         self.value = float(value)
         AccountingEntry.cod +=1
         self.cash_book = cash_book
+        self.add_entry()
 
-    def set_entry(self) -> None:
+    def add_entry(self) -> None:
         if self.is_debit:
             self.cash_book.balance += self.value
             self.cash_book.debits[self.cod] = [self.date, self.description, self.value]

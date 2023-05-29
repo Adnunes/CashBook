@@ -1,20 +1,27 @@
-import cash_flow
+import cash_flow as cf
 
+input_message = 'Select an option: \n [1]Accounting an Entry - [2]Exit: '
+option= 0
 
-cash_book_1 = CashBook('Empresa Abc')
+book_name = input("What's the name of your Cash Book?: ")
+cash_book = cf.CashBook(book_name)
+option = int(input(input_message))
 
-lancamento_1 = AccountingEntry('29/05/2023', 'primeiro lancamento',True,124, cash_book_1)
-lancamento_1.set_entry()
+while option != 2 :
+    
+    date  = input("What's the date wich this entry occur? :")
+    description = input("What's the description of this entry? :")
+    is_debit = input('Is it a credit [C] or debit [D]? :')
+    value = input("What's value?:")
+    is_debit = is_debit.upper()
 
-lancamento_2 = AccountingEntry('29/05/2023', 'segundo lancamento',True,134, cash_book_1)
-lancamento_2.set_entry()
+    if is_debit =="D":
+        is_debit = True
+    else: 
+        is_debit = False
 
-lancamento_3 = AccountingEntry('29/05/2023', 'terceiro lancamento',False,8, cash_book_1)
-lancamento_3.set_entry()
+    accounting_entry = cf.AccountingEntry(date,description, is_debit, value, cash_book)     
+    option = int(input(input_message))
+    
 
-lancamento_4 = AccountingEntry('29/05/2023', 'quarto lancamento',False,10, cash_book_1)
-lancamento_4.set_entry()
-
-
-
-print(cash_book_1)
+print(cash_book)
